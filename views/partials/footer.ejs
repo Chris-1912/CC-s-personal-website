@@ -1,0 +1,72 @@
+   
+      </div>
+    </div> 
+        
+          
+      
+            <div class="d-flex justify-content-between"  id="last">
+              <footer id="bottom" class=" container d-flex justify-content-between align-items-center ">
+                <div class="col-md-4 d-flex align-items-center">
+                  <span id="end" class="mb-3 mb-md-0">© <%= new Date().getFullYear() %> CHRIS CHEN</span>
+                </div>
+            
+                <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+                  <li class="ms-3"><a class="text-body-secondary" href="#"><img width="24" height="24" src="/image/twitter_white.png" alt="twitter logo" /></a></li>
+                  <li class="ms-3"><a class="text-body-secondary" href="#"><img width="24" height="24" src="/image/email.png" alt="twitter logo" /></a></li>
+                 
+                </ul>
+              </footer>
+            </div>
+            
+          <script>
+            // Get the path of current page
+            const currentPath = window.location.pathname.replace(/\/$/, ''); 
+            // Set the navbar-item as active based on the path of the page
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+              const linkPath = link.getAttribute('href').replace(/\/$/, ''); 
+      
+              if ((currentPath.includes('/about/') && linkPath.includes('/about')) ||
+                  (currentPath.includes('/essay/') && linkPath.includes('/essay')) ||
+                  (currentPath.includes('/booknotes/') && linkPath.includes('/booknotes')) ||
+                  (currentPath.includes('/novel/') && linkPath.includes('/novel'))) {
+                  link.classList.add('active');
+              } else if (linkPath === currentPath) {
+                  link.classList.add('active');
+              }
+          });
+
+          </script>
+
+<!-- Booknotes detail page delete confirm -->
+    <script>
+      function confirmDelete(){
+      return confirm("Are you sure you want to delete?");
+    }
+    </script>
+
+<!-- Textarea automatically expand to display all inner contents-->    
+<script>
+  document.querySelectorAll(".autoExpand").forEach(function(textarea) {
+    textarea.style.height = 'auto'; 
+    textarea.style.height = textarea.scrollHeight + 'px';
+
+    textarea.addEventListener('input', function() {  
+      this.style.height = 'auto';  
+      this.style.height = this.scrollHeight + 'px';  
+    });  
+  });
+</script>
+
+  <!-- Sort select -->
+  <script>
+    document.getElementById('sortSelect').addEventListener('change', function() {
+        // Trigger the form submission when the select value changes
+        document.getElementById('bnSort').submit();
+    });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<%- include("../partials/header.ejs") %>
+<form action="/booknotes/saveNewBn" method="post" class="bookNotesFill" id="">
+    <% if(locals.bookInfo){%>
+        <% if(bookInfo.cover && bookInfo.cover.medium){ %>
+            <img class="bookCover" src="<%=bookInfo.cover.medium%>" />
+        <%}else{%>
+            <input hidden name="cover_path" value="/image/error_not_found_icon.png" />
+        <%}%>
+        <input hidden name="title" value="<%=bookInfo.title  %>" />
+        <h3 ><%=bookInfo.title  %></h3>
+        
+        <input hidden name="isbn" value="<%=isbn  %>" />
+        <span>ISBN : <%=isbn  %></span>
+
+        <div>
+            <label >Publishing Year: 
+                <input name="publishing_year" value="<%=(bookInfo.publish_date).slice(0, 4)  %>"/>
+            </label>
+        </div>
+        
+        <div>
+            <label>Cover_path:
+                <% if(bookInfo.cover && bookInfo.cover.medium){ %>
+                    <input name="cover_path" value="<%=bookInfo.cover.medium %>" /> 
+                <%}else{%>
+                    <input name="cover_path" value="/image/error_not_found_icon.png" />
+                <%}%>
+            </label>
+        </div>
+    <%} %>
+        <div>
+            <label >Date read: 
+                <input name="date_read" placeholder="XXXX-XX-XX"/>
+            </label>
+        </div>
+
+        <div>
+            <label >Rating: 
+                <input name="rating" placeholder="0-10"/>
+            </label>
+        </div>
+
+        <div class="nagging">
+            <label >Summary:</label>
+            <textarea class="autoExpand" name="summary" rows="4"></textarea>
+            
+        </div>
+        
+        <div class="nagging">
+            <label >Notes:</label>
+            <textarea name="notes" class="autoExpand" rows="6"></textarea>
+            
+        </div>
+        
+     
+    <button type="submit">Submit</button>
+</form>
+
+
+<%- include("../partials/footer.ejs") %>

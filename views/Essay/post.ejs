@@ -1,0 +1,17 @@
+<%- include("partials/header.ejs") %>
+
+<span class="title"><%=title%></span>
+<p id="full"><%=content%></p>
+<div class="container d-flex ">
+    <form action="/essay/edit/<%=title%>" method="get">   
+        <button type="submit"  class="btn btn-normal btn-sm" >Edit</button>
+    </form>
+    
+
+    <form action="/essay/delete/<%=title%>" method="post">
+        
+        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this?')">Delete</button>
+    </form>
+</div>
+
+<%- include("partials/footer.ejs") %>

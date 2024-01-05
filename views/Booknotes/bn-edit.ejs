@@ -1,0 +1,57 @@
+<%- include("../partials/header.ejs") %>
+<% if(locals.bookInfo){%>
+           
+    <form action="/booknotes/saveEdittedBn/<%=bookInfo.isbn %>" method="post" class="bookNotesFill" id="bnEdit">
+        
+            <img class="bookCover" src="<%=bookInfo.cover_path%>" />
+        
+        <h3 ><%=bookInfo.title  %></h3>
+
+        <div>
+            <label>Cover path:
+                <input name="cover_path" value="<%=bookInfo.cover_path %>" />
+            </label>
+        </div>
+        
+       
+        <span>ISBN : <%=bookInfo.isbn  %></span>
+        
+        <div>
+            <label >Publishing Year: 
+                <input name="publishing_year" value="<%=bookInfo.publishing_year%>"/>
+            </label>
+        </div>
+
+        <div>
+            <label >Date read: 
+                <input name="date_read" value="<%=moment(bookInfo.date_read).format('YYYY-MM-DD')  %>"/>
+            </label>
+        </div>
+        
+        <div>
+            <label >Rating: 
+                <input name="rating" value="<%=bookInfo.rating  %>">
+            </label>
+        </div>
+        
+        <div class="nagging">
+            <label >Summary:</label>
+            <textarea class="autoExpand" name="summary" rows="4" ><%=bookInfo.summary  %></textarea>
+            
+        </div>
+        
+        <div class="nagging">
+            <label >Notes:</label>
+            <textarea class="autoExpand" name="notes" rows="6"><%=bookInfo.notes%></textarea>
+            
+        </div>
+        
+
+        <button type="submit">Submit</button>   
+    </form>
+<%} %> 
+
+
+
+
+<%- include("../partials/footer.ejs") %>

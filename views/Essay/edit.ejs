@@ -1,0 +1,17 @@
+<%- include("partials/header.ejs") %>
+<h1>Edit</h1>
+
+<Form action="/essay/edit/<%= editTitle %>" method="post" >
+  <div class="mb-3">
+    <label class="form-label">Title</label>
+    <input type="text" class="form-control" name="edittedTitle"  value="<%= editTitle %>">
+  </div>
+  
+  <div class="mb-3">
+    <label  class="form-label">Content</label>
+    <textarea class="form-control"  name="edittedContent" rows="5"><%= editContent %></textarea>
+  </div> 
+  <button type="submit" class="btn" id="publish">Publish</button>
+</Form>
+
+<%- include("partials/footer.ejs") %>

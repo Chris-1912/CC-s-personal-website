@@ -1,0 +1,12 @@
+<%- include("partials/header.ejs") %>
+    <%if(locals.posts){%>
+        <%posts.forEach((post)=>{%>
+            <span class="sTitle"><%=post.title%></span>
+            <p id="preview"><%=post.content.substring(0,100)+" ..."%>
+                <a href="/essay/posts/<%=post.title%>" id="readM">Read More</a>
+
+            </p>
+            
+        <%});%>
+    <%} %>
+<%- include("partials/footer.ejs") %>

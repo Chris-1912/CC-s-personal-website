@@ -1,0 +1,46 @@
+<%- include("../partials/header.ejs") %>
+
+        <form  class="bookNotesFill" id="bnDetail">
+            <% if(locals.bookInfo){%>
+                <img class="bookCover" src="<%=bookInfo.cover_path%>" />
+                
+                <h3 ><%=bookInfo.title  %></h3> 
+                
+                <span>ISBN : <%=bookInfo.isbn  %></span>
+         
+                <span>Publishing Year : <%=bookInfo.publishing_year  %></span>  
+                
+                <span>Date read : <%=moment(bookInfo.date_read).format('YYYY-MM-DD') %></span>
+                <div id="sameLine">
+                    <span>Rating: <span style="font-weight: bold;"><%=bookInfo.rating %></span>/ 10</span>
+                </div>
+                
+                <div class="nagging">
+                    <label>Summary:</label>
+                    <pre><%=bookInfo.summary %></pre>
+                </div>
+                <div class="nagging">
+                    <label>Notes:</label>
+                   
+                    <pre ><%=bookInfo.notes %></pre>
+                </div>
+                
+                
+            
+            <%} %> 
+        </form>
+        <div class="formEndButton">
+            <form action="/booknotes/edit/<%= bookInfo.isbn %>" method="post">
+                <button type=" submit"  >Edit</button>
+            </form>
+
+            <form action="/booknotes/delete/<%= bookInfo.isbn %>" method="post" onsubmit="return confirmDelete();">  
+                <button type="submit" id="deleteButton" >Delete</button>
+            </form>
+        </div>
+        
+
+<%- include("../partials/footer.ejs") %>
+
+
+

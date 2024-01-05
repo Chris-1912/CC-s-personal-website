@@ -1,0 +1,41 @@
+<%- include("../partials/header.ejs") %>
+    <div id="buttonGroup">
+        <form action="/booknotes/sort" method="post" id="bnSort">
+            <select name="bnSortStandard" id="sortSelect">
+                <option value="">Sort</option>
+                <option value="rating">Best</option>
+                <option value="date_read">Newest</option>
+            </select>
+        </form>
+        
+
+        <form action="/booknotes/composeNewBn" method="post" id="addNewBN" >
+            <input name="queryIsbn" placeholder="ISBN-13"/>
+            <button type="submit">
+                Add
+            </button>
+        </form>  
+    </div>
+    
+    <div class="bnPreview">
+        <% if(locals.bookPreInfos){%>
+            <% bookPreInfos.forEach((item)=>{%>
+                <form  class="bookNotesFill">
+        
+                <img class="bookCover" src="<%=item.cover_path%>" />
+                <h3 ><%=item.title  %></h3>
+            
+                <span id="leftSpan">Date read : <%=moment(item.date_read).format('YYYY-MM-DD') %>.</span>
+            
+                <span>My rating : <%=item.rating %> /10</span>
+
+                <p><%=item.summary %></p> 
+                <p id="furtherMore"><a href="/booknotes/<%= item.isbn %>" >Read my notes</a> and know more about this book.</p>
+                </form>
+            <% })%>
+        <%} %> 
+    </div>
+    
+        
+    
+    <%- include("../partials/footer.ejs") %>
